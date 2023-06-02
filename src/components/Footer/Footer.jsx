@@ -1,7 +1,6 @@
-import React from "react";
+import React from 'react';
 
 function Footer() {
-  console.log("oi");
   return (
     <footer className="h-[250px] flex flex-col items-center justify-center bg-[#edf3f6]">
       <h3 className="mb-7 font-semibold">Escreva sobre o que você tem interesse</h3>

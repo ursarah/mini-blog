@@ -1,5 +1,6 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useState } from 'react';
+import { useAuth } from '../../hooks/useAuth';
 
 function Cadastro() {
   const [displayName, setDisplayName] = useState('');
@@ -8,7 +9,9 @@ function Cadastro() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
+  const { createUser, error: authError, loading } = useAuth();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     setError('');
@@ -23,8 +26,16 @@ function Cadastro() {
       setError('As senhas precisam ser iguais');
       return;
     }
-    console.log(user);
+
+    const res = await createUser(user);
   };
+
+  // aqui ele ta monitorando o authError, se ele der aquelas mensagens no console muda aqui
+  useEffect(() => {
+    if (authError) {
+      setError(authError);
+    }
+  }, [authError]);
 
   return (
     <main className="min-h-[60vh] mb-[5em]">
@@ -81,7 +92,13 @@ function Cadastro() {
             required
           />
         </label>
-        <button className="btn rounded-[10px] w-full">Cadastrar</button>
+        {loading ? (
+          <button className="btn rounded-[10px] w-full" disabled>
+            Aguarde...
+          </button>
+        ) : (
+          <button className="btn rounded-[10px] w-full">Cadastrar</button>
+        )}
         {error && (
           <p className="text-[#721c24] bg-[#f8d7da] border-1 border-solid border-black p-2 text-center mt-8 rounded-[5px]">
             {error}
