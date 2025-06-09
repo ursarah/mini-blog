@@ -1,10 +1,63 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function NewPost() {
+  const [newPost, setNewPost] = useState([])
+  const [titulo, setTitulo] = useState("")
+  const [descricao, setDescricao] = useState("")
+  const [tags, setTags] = useState("")
+  const [url, setUrl] = useState("")
+
+  const handleSubmitNewPost = (e) => {
+    e.preventDefault()
+    if (titulo == "" && descricao == "" && tags == "" && url == "") return
+    setNewPost({ titulo, descricao, tags, url })
+    console.log(newPost)
+  }
   return (
-    <main className="min-h-[60vh] mb-[5em]">
-      <h1>Novo post</h1>
-    </main>
+    <form>
+      <div className="flex flex-col mt-5">
+        <span className="my-[.3em] font-bold text-left">Titulo do post:</span>
+        <input
+          className="bg-[#f6fcff] p-2 border-b-1 border-b-solid border-b-black focus:outline-none"
+          type="text"
+          name="titulo"
+          placeholder="Novo post"
+          onChange={(e) => setTitulo(e.target.value)}
+        />
+      </div>
+      <div className="flex flex-col mt-5">
+        <span className="my-[.3em] font-bold text-left">Descrição:</span>
+        <textarea
+          className="bg-[#f6fcff] p-2 border-b-1 border-b-solid border-b-black focus:outline-none"
+          name="descricao"
+          placeholder="Descrição"
+          onChange={(e) => setDescricao(e.target.value)}
+        />
+      </div>
+      <div className="flex flex-col mt-5">
+        <span className="my-[.3em] font-bold text-left">Tags:</span>
+        <input
+          className="bg-[#f6fcff] p-2 border-b-1 border-b-solid border-b-black focus:outline-none"
+          type="text"
+          name="tags"
+          placeholder="Tags"
+          onChange={(e) => setTags(e.target.value)}
+        />
+      </div>
+      <div className="flex flex-col mt-5">
+        <span className="my-[.3em] font-bold text-left">Url da imagem:</span>
+        <input
+          className="bg-[#f6fcff] p-2 border-b-1 border-b-solid border-b-black focus:outline-none"
+          type="text"
+          name="link"
+          placeholder="Url"
+          onChange={(e) => setUrl(e.target.value)}
+        />
+      </div>
+      <button className="btn rounded-[10px] w-full" onClick={handleSubmitNewPost}>
+        Criar post
+      </button>
+    </form>
   );
 }
 

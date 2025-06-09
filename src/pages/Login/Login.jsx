@@ -29,7 +29,7 @@ function Login() {
   }, [authError]);
 
   return (
-    <main className="min-h-[60vh] mb-[5em]">
+    <>
       <div className="text-center">
         <h1 className="text-[30px] font-bold mt-10">Entrar</h1>
         <p className="text-[#aaa] my-[2em]">Faça o login pra poder utilizar.</p>
@@ -73,7 +73,7 @@ function Login() {
           </p>
         )}
       </form>
-    </main>
+    </>
   );
 }
 

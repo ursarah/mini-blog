@@ -42,14 +42,16 @@ function App() {
       <AuthProvider value={{ user }}>
         <BrowserRouter>
           <Header />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/sobre" element={<About />} />
-            <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
-            <Route path="/cadastro" element={!user ? <Cadastro /> : <Navigate to="/" />} />
-            <Route path="/posts/newpost" element={user ? <NewPost /> : <Navigate to="/login" />} />
-            <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to="/login" />} />
-          </Routes>
+          <main className='min-h-[60vh] max-w-[50%] py-10 my-0 mx-auto'>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/sobre" element={<About />} />
+              <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
+              <Route path="/cadastro" element={!user ? <Cadastro /> : <Navigate to="/" />} />
+              <Route path="/posts/newpost" element={user ? <NewPost /> : <Navigate to="/login" />} />
+              <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to="/login" />} />
+            </Routes>
+          </main>
           <Footer />
         </BrowserRouter>
       </AuthProvider>

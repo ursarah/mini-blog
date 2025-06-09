@@ -1,10 +1,17 @@
 import React from 'react';
+import { BiEdit, BiTrash } from 'react-icons/bi';
 
 function Dashboard() {
   return (
-    <main className="min-h-[60vh] mb-[5em]">
-      <h1>Dashboard</h1>
-    </main>
+    <>
+      <div className='flex justify-between items-center bg-gray-200 p-2'>
+        <h1 className='font-bold'>TItulo do post</h1>
+        <div className='flex items-center gap-2'>
+          <button className='text-xl bg-green-400 p-2 text-gray-600 cursor-pointer rounded-sm'><BiEdit /></button>
+          <button className='text-xl bg-red-400 p-2 text-gray-600 cursor-pointer rounded-sm'><BiTrash /></button>
+        </div>
+      </div>
+    </>
   );
 }
 

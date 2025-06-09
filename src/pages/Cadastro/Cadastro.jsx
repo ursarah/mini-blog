@@ -38,7 +38,7 @@ function Cadastro() {
   }, [authError]);
 
   return (
-    <main className="min-h-[60vh] mb-[5em]">
+    <>
       <div className="text-center my-10">
         <h1 className="text-[30px] font-bold">Cadastre-se para postar</h1>
         <p className="my-5">Crie seu usuário e compartilhe suas histórias</p>
@@ -105,7 +105,7 @@ function Cadastro() {
           </p>
         )}
       </form>
-    </main>
+    </>
   );
 }
 
