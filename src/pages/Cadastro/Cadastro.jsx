@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 
-function Cadastro() {
+const Cadastro = () => {
   const [displayName, setDisplayName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -108,5 +108,6 @@ function Cadastro() {
     </>
   );
 }
+
 
 export default Cadastro;

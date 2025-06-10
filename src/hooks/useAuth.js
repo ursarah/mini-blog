@@ -14,7 +14,6 @@ export const useAuth = () => {
   const [loading, setLoading] = useState(null);
 
   //Clean up
-
   const [cancelled, setCancelled] = useState(false);
 
   const auth = getAuth();
@@ -64,6 +63,7 @@ export const useAuth = () => {
     }
 
   };
+
   // Login 
   const login = async (data) => {
     checkIfIsCancel()
@@ -104,5 +104,6 @@ export const useAuth = () => {
   useEffect(() => {
     return () => setCancelled(true);
   }, []);
+
   return { auth, createUser, login, logout, error, loading };
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function About() {
+const About = () => {
   return (
     <div className="text-center flex-col items-center">
       <h1 className="text-[30px] font-bold mt-10">

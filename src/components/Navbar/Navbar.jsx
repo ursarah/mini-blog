@@ -1,10 +1,10 @@
-import React from 'react';
+
 import { NavLink } from 'react-router-dom';
-import { useAuthValue } from '../../context/AuthContext';
+import { useContextAuth } from '../../context/AuthContext';
 import { useAuth } from '../../hooks/useAuth';
 
-function Navbar() {
-  const { user } = useAuthValue();
+const Navbar = () => {
+  const { user } = useContextAuth();
   const { logout } = useAuth();
   return (
     <nav>
@@ -40,4 +40,6 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default Navbar
+
+

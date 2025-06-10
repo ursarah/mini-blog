@@ -1,18 +1,25 @@
 import React, { useState } from 'react';
+import { useContextAuth } from '../../context/AuthContext';
+import { redirect } from 'react-router-dom';
 
-function NewPost() {
-  const [newPost, setNewPost] = useState([])
+const NewPost = () => {
   const [titulo, setTitulo] = useState("")
   const [descricao, setDescricao] = useState("")
   const [tags, setTags] = useState("")
   const [url, setUrl] = useState("")
+  const { newPost, setNewPost } = useContextAuth()
 
   const handleSubmitNewPost = (e) => {
     e.preventDefault()
     if (titulo == "" && descricao == "" && tags == "" && url == "") return
-    setNewPost({ titulo, descricao, tags, url })
-    console.log(newPost)
+    if (newPost == null) {
+      setNewPost({ titulo, descricao, tags, url })
+    } else {
+      setNewPost([...newPost, { titulo, descricao, tags, url }])
+    }
+    redirect("/")
   }
+
   return (
     <form>
       <div className="flex flex-col mt-5">
@@ -61,4 +68,4 @@ function NewPost() {
   );
 }
 
-export default NewPost;
+export default NewPost

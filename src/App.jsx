@@ -2,12 +2,9 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 
 // hooks
-import React, { useEffect, useState } from 'react';
-import { useAuth } from './hooks/useAuth';
 
 // Context
-import { AuthProvider } from './context/AuthContext';
-import { onAuthStateChanged } from 'firebase/auth';
+import { useContextAuth } from './context/AuthContext';
 
 // Pages
 import Home from './pages/Home/Home';
@@ -21,17 +18,9 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 
-function App() {
-  const [user, setUser] = useState(undefined);
-  const { auth } = useAuth();
+const App = () => {
 
-  const loadingUser = user === undefined;
-
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      setUser(user);
-    });
-  }, [auth]);
+  const { user, loadingUser } = useContextAuth()
 
   if (loadingUser) {
     return <p>Carregando...</p>;
@@ -39,22 +28,20 @@ function App() {
 
   return (
     <>
-      <AuthProvider value={{ user }}>
-        <BrowserRouter>
-          <Header />
-          <main className='min-h-[60vh] max-w-[50%] py-10 my-0 mx-auto'>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/sobre" element={<About />} />
-              <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
-              <Route path="/cadastro" element={!user ? <Cadastro /> : <Navigate to="/" />} />
-              <Route path="/posts/newpost" element={user ? <NewPost /> : <Navigate to="/login" />} />
-              <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to="/login" />} />
-            </Routes>
-          </main>
-          <Footer />
-        </BrowserRouter>
-      </AuthProvider>
+      <BrowserRouter>
+        <Header />
+        <main className='min-h-[60vh] max-w-[50%] py-10 my-0 mx-auto'>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/sobre" element={<About />} />
+            <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
+            <Route path="/cadastro" element={!user ? <Cadastro /> : <Navigate to="/" />} />
+            <Route path="/posts/newpost" element={user ? <NewPost /> : <Navigate to="/login" />} />
+            <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to="/login" />} />
+          </Routes>
+        </main>
+        <Footer />
+      </BrowserRouter>
     </>
   );
 }

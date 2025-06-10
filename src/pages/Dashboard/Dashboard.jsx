@@ -1,7 +1,7 @@
 import React from 'react';
 import { BiEdit, BiTrash } from 'react-icons/bi';
 
-function Dashboard() {
+const Dashboard = () => {
   return (
     <>
       <div className='flex justify-between items-center bg-gray-200 p-2'>
@@ -14,5 +14,6 @@ function Dashboard() {
     </>
   );
 }
+
 
 export default Dashboard;

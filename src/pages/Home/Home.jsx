@@ -1,16 +1,23 @@
-import React from "react";
+import { useContextAuth } from "../../context/AuthContext";
 
-function Home() {
+
+const Home = () => {
+  const { newPost } = useContextAuth()
   return (
-    <div>
+    <>
       <h1 className="font-bold text-center text-4xl">Todos os posts</h1>
-      <div className="text-center pt-5">
-        <h1 className="font-bold text-2xl">Titulo do post</h1>
-        <img src="" alt="" />
-        <p>#Tags, #TAgs</p>
-        <h3>Descrição do post</h3>
-      </div>
-    </div>
+      {newPost.length == 0 && (<h1>Nenhum Post</h1>)}
+      {newPost.map((post) =>
+        <div>
+          <div className="text-center pt-5">
+            <h1 className="font-bold text-2xl">{post.titulo}</h1>
+            <img src={post.url} alt={post.titulo} />
+            <p>{post.tags}</p>
+            <h3>{post.descricao}</h3>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 
