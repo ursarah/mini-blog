@@ -16,7 +16,7 @@ const Navbar = () => {
       </NavLink>
       {user ? (
         <>
-          <NavLink className="mx-2 p-1 duration-[.3s]" to="/posts/newpost">
+          <NavLink className="mx-2 p-1 duration-[.3s]" to="/newpost">
             Novo post
           </NavLink>
           <NavLink className="mx-2 p-1 duration-[.3s]" to="/dashboard">

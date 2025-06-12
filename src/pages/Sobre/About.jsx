@@ -10,7 +10,7 @@ const About = () => {
       <p className="text-[#aaa] my-[2em]">
         Este projeto é um Blog feito em React e Firebase no back-end.
       </p>
-      <Link to="/posts/newpost" className="btn py-[10px] px-[15px] rounded-[10px]">
+      <Link to="/newpost" className="btn py-[10px] px-[15px] rounded-[10px]">
         Criar post
       </Link>
     </div>
