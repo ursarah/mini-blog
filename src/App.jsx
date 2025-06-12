@@ -30,7 +30,7 @@ const App = () => {
     <>
       <BrowserRouter>
         <Header />
-        <main className='min-h-[60vh] max-w-[50%] py-10 my-0 mx-auto'>
+        <main className='min-h-[60vh] max-w-7xl py-10 my-0 mx-auto'>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/sobre" element={<About />} />

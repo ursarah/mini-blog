@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useContextAuth } from '../../context/AuthContext';
-import { redirect } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const NewPost = () => {
   const [titulo, setTitulo] = useState("")
@@ -8,6 +8,7 @@ const NewPost = () => {
   const [tags, setTags] = useState("")
   const [url, setUrl] = useState("")
   const { newPost, setNewPost } = useContextAuth()
+  const navigate = useNavigate()
 
   const handleSubmitNewPost = (e) => {
     e.preventDefault()
@@ -17,7 +18,7 @@ const NewPost = () => {
     } else {
       setNewPost([...newPost, { titulo, descricao, tags, url }])
     }
-    redirect("/")
+    navigate("/")
   }
 
   return (
@@ -47,7 +48,7 @@ const NewPost = () => {
           className="bg-[#f6fcff] p-2 border-b-1 border-b-solid border-b-black focus:outline-none"
           type="text"
           name="tags"
-          placeholder="Tags"
+          placeholder="Tags, separe com virgula"
           onChange={(e) => setTags(e.target.value)}
         />
       </div>
@@ -61,7 +62,7 @@ const NewPost = () => {
           onChange={(e) => setUrl(e.target.value)}
         />
       </div>
-      <button className="btn rounded-[10px] w-full" onClick={handleSubmitNewPost}>
+      <button className="btn rounded-[10px] w-full cursor-pointer" onClick={handleSubmitNewPost}>
         Criar post
       </button>
     </form>
