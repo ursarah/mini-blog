@@ -13,16 +13,19 @@ const NewPost = () => {
   const handleSubmitNewPost = (e) => {
     e.preventDefault()
     if (titulo == "" && descricao == "" && tags == "" && url == "") return
-    if (newPost == null) {
-      setNewPost({ titulo, descricao, tags, url })
+    const id = Math.floor(Math.random() * 9999) + 1
+
+    if (newPost.length === 0) {
+      setNewPost([{ id, titulo, descricao, tags, url }])
     } else {
-      setNewPost([...newPost, { titulo, descricao, tags, url }])
+      setNewPost([...newPost, { id, titulo, descricao, tags, url }])
     }
+
     navigate("/")
   }
 
   return (
-    <form>
+    <form className='max-w-[50%] mx-auto'>
       <div className="flex flex-col mt-5">
         <span className="my-[.3em] font-bold text-left">Titulo do post:</span>
         <input

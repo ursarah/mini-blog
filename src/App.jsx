@@ -22,12 +22,9 @@ const App = () => {
 
   const { user, loadingUser } = useContextAuth()
 
-  if (loadingUser) {
-    return <p>Carregando...</p>;
-  }
-
   return (
     <>
+      {loadingUser && <p>Carregando...</p>}
       <BrowserRouter>
         <Header />
         <main className='min-h-[60vh] max-w-7xl py-10 my-0 mx-auto'>
