@@ -29,7 +29,7 @@ npm install
 npm run dev
 ```
 
-## 6. **Funcionalidades**
+## **Funcionalidades**
 
 ```markdown
 - [x] Cadastrar
